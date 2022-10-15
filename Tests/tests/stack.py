@@ -12,7 +12,7 @@ class TestClass:
             stack.push(i)
 
         got = []
-        while not stack.isEmpty():
+        while not stack.is_empty():
             got.append(stack.pop())
 
         assert expected == got
@@ -20,7 +20,7 @@ class TestClass:
     def test_stack_empty(self):
         stack = Stack()
 
-        assert stack.isEmpty()
+        assert stack.is_empty()
 
     def test_stack_empty_pop(self):
         stack = Stack()

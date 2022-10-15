@@ -16,7 +16,7 @@ class LinkedList:
         self.head = new_node
         self.length = length
 
-    def isEmpty(self):
+    def is_empty(self):
         return self.length == 0
 
     def insert(self, value=None, position=None):
@@ -61,7 +61,7 @@ class LinkedList:
     def remove(self, position=None):
         if position is None:
             raise ValueError("Index cannot be none.")
-        if self.isEmpty():
+        if self.is_empty():
             raise ValueError("List is empty.")
         if position > self.length:
             raise ValueError("Index out of range.")
@@ -95,7 +95,7 @@ class LinkedList:
         self.length -= 1
         return curr.value
 
-    def popFront(self):
+    def pop_front(self):
         if not self.head:
             raise ValueError("List is empty.")
         self.length -= 1
@@ -103,7 +103,7 @@ class LinkedList:
         self.head = self.head.next
         return temp
 
-    def peekFront(self):
+    def peek_front(self):
         if not self.head:
             raise ValueError("List is empty.")
         else:
