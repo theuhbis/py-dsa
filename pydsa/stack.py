@@ -9,10 +9,10 @@ class Stack:
         self.stack.insert(value, 0)
 
     def pop(self):
-        return self.stack.popFront()
+        return self.stack.pop_front()
 
     def peek(self):
-        return self.stack.peekFront()
+        return self.stack.peek_front()
 
-    def isEmpty(self):
-        return self.stack.isEmpty()
+    def is_empty(self):
+        return self.stack.is_empty()

@@ -3,7 +3,7 @@ import pytest
 
 
 class TestClass:
-    def test_singlylinkedlist_popfront(self):
+    def test_singlylinkedlist_pop_front(self):
         ll = SinglyLinkedList()
 
         num_list = ["one", "two", "three", "four", "five"]
@@ -12,8 +12,8 @@ class TestClass:
             ll.insert(num)
 
         got = []
-        while not ll.isEmpty():
-            got.append(ll.popFront())
+        while not ll.is_empty():
+            got.append(ll.pop_front())
 
         assert num_list == got
 
@@ -26,7 +26,7 @@ class TestClass:
             ll.insert(num)
 
         got = []
-        while not ll.isEmpty():
+        while not ll.is_empty():
             got.append(ll.pop())
 
         assert num_list[::-1] == got
@@ -42,16 +42,16 @@ class TestClass:
 
         ll.remove(2)
         got = []
-        while not ll.isEmpty():
-            got.append(ll.popFront())
+        while not ll.is_empty():
+            got.append(ll.pop_front())
 
         assert expected == got
 
     def test_singlylinkedlist_empty(self):
         ll = SinglyLinkedList()
-        assert ll.isEmpty()
+        assert ll.is_empty()
 
-    def test_singlylinkedlist_peekfront(self):
+    def test_singlylinkedlist_peek_front(self):
         ll = SinglyLinkedList()
 
         num_list = ["one", "two", "three", "four", "five"]
@@ -59,7 +59,7 @@ class TestClass:
         for num in num_list:
             ll.insert(num)
 
-        assert "one" == ll.peekFront()
+        assert "one" == ll.peek_front()
 
     def test_singlylinkedlist_reverse(self):
         ll = SinglyLinkedList()
@@ -72,8 +72,8 @@ class TestClass:
         ll.reverse()
 
         got = []
-        while not ll.isEmpty():
-            got.append(ll.popFront())
+        while not ll.is_empty():
+            got.append(ll.pop_front())
 
         assert num_list[::-1] == got
 
