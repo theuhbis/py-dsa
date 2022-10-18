@@ -1,73 +1,35 @@
-class Queue:
-    size = int(input("input the length of your queue: "))
-    queue = []
-    start = True
+from pydsa import Queue
+import pytest
 
 
-    def enqueue(self):
-        if len(self.queue) >= self.size:
-            print("overflow, queue is full")
-        else:
-            input1 = int(input("Input the number: "))
-            self.queue.append(input1)
-            print("element has been inserted")
+class TestClass:
+    def test_queue_list(self):
+        expected = [5, 4, 3, 2, 1]
 
-    def dequeue(self):
-        if len(self.queue) == 0:
-            print("underflow, queue is empty")
-        else:
-            self.queue.remove(self.queue[0])
-            print("element has been removed")
-            print(self.queue)
+        queue = Queue()
 
-    def is_Empty(self):
-        if len(self.queue) == 0:
-            print("queue is empty")
-        else:
-            print(f"Queue is not empty {self.queue}")
+        for i in range(1, 6):
+            queue.enqueue(i)
 
-    def peek(self):
-        if len(self.queue) == 0:
-            print("queue is empty and has no peek")
-        else:
-            print(self.queue[0])
+        got = []
+        while not queue.is_empty():
+            got.append(queue.dequeue())
 
-    def start(self):
-        while self.start:
-            input2 = int(input("""What will you like to do to your queue:
-                            1.Enqueue
-                            2.Dequeue
-                            3. find peek
-                            4. check if queue is empty: """))
-            if input2 == 1:
-                self.enqueue()
-                self.continuation()
-            elif input2 == 2:
-                self.dequeue()
-                self.continuation()
-            elif input2 == 3:
-                self.peek()
-                self.continuation()
-            elif input2 == 4:
-                self.is_Empty()
-                self.continuation()
-            else:
-                print("enter a correct number")
-                self.continuation()
+        assert expected == got
 
-    def continuation(self):
-        input3 = input("Do you wish to continue Y for yes and N for no: ").upper()
-        if input3 == "N":
-            self.start = False
-        elif input3 == "Y":
-            self.start = True
-        else:
-            print("input the correct letter: ")
-            self.continuation()
+    def test_queue_empty(self):
+        queue = Queue()
 
-    def __init__(self):
-        pass
+        assert queue.is_empty()
 
+    def test_queue_empty_pop(self):
+        queue = Queue()
+        with pytest.raises(Exception):
+            queue.dequeue()
 
-obj = Queue()
-obj.start()
+    def test_stack_peek(self):
+        queue = Queue()
+        for i in range(1, 6):
+            queue.enqueue(i)
+
+        assert queue.peek() == 5
