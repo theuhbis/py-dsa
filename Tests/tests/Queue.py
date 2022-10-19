@@ -4,7 +4,7 @@ import pytest
 
 class TestClass:
     def test_queue_list(self):
-        expected = [5, 4, 3, 2, 1]
+        expected = [1, 2, 3, 4, 5]
 
         queue = Queue()
 
@@ -32,4 +32,4 @@ class TestClass:
         for i in range(1, 6):
             queue.enqueue(i)
 
-        assert queue.peek() == 5
+        assert queue.peek() == 1
