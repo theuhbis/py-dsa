@@ -6,7 +6,7 @@ class Queue:
         self.queue = LinkedList()
 
     def enqueue(self, value):
-        self.queue.insert(value, 0)
+        self.queue.insert(value)
 
     def dequeue(self):
         return self.queue.pop_front()
